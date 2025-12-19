@@ -1,0 +1,65 @@
+body{
+    background-color: midnightblue;
+    color: aliceblue;
+}
+
+.container {
+    margin: 20px auto;
+    display: block;
+    width: 80%;
+    max-width: 800px;
+    background-color: #ffffff1a;
+    box-shadow: 0 5px 5px 5px black ;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+h1, p {
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+fieldset {
+    padding: 10px 30px;
+    margin: 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+label:not(.radio-btn), input:not(input[type='radio']), textarea, p{
+    display: block;
+    width: 100%;
+    font-size: 1.2rem;
+}
+
+input, textarea {
+    background-color: #ffffff1a;
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-right: 20px;
+    padding: 10px;
+}
+button {
+    padding: 15px 30px;
+    display: block;
+    margin: 10px auto;
+    font-size: 1.2rem;
+    background-color: blue;
+    color: aliceblue;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+button:hover{
+  background-color: midnightblue;
+  color: whitesmoke;
+  transition: all 0.3s ease-in;
+}

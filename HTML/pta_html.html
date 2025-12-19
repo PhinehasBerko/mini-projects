@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is a page for PTA forms." />
+    <meta name="author" content="Phinehas Berko">
+    <title>Parent and Teachers Association Forms</title>
+    <link rel="stylesheet" href="../CSS/pta_styles.css">
+</head>
+<body>
+   <div class="container">
+    <h1 class="title">Parent Teacher Conference Form</h1>
+    <p>Please fill out the form below to help schedule your PTA conference.</p>
+    <form action="">
+        <fieldset>
+            <legend>Student Information</legend>
+            <label for="full-name">Full Name: </label>
+            <input type="text" id="full-name" name="full-name" placeholder="E.g, Phinehas Berko" required>
+            <label for="grade">Student Grade: </label>
+            <input type="number" id="grade" name="grade" placeholder="E.g, 3" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>Parent/Guardian Information</legend>
+            <label for="parent-info">Parent/Guardian Information:</label>
+            <input type="text" name="parent-info" id="parent-info" placeholder="E.g, Mrs. Grace Berko" required>
+        </fieldset>
+        <fieldset class="radio-btn-fieldset">
+            <legend>Preferred Contact Method</legend>
+            <label for="email" class="radio-btn">E-mail:</label>
+            <input type="radio" name="contact-method" id="email" value="email" checked>
+            <label for="Phone" class="radio-btn">Phone:</label>
+            <input type="radio" name="contact-method" id="Phone" value="Phone" >
+        </fieldset>
+
+        <fieldset>
+            <legend>Addition Notes</legend>
+            <label for="notes">Any specific concerns or topics you'd like to discuss?</label>
+            <textarea name="notes" id="notes" rows="5" cols="50" ></textarea>
+        </fieldset>
+        <button type="submit">Submit Form</button>
+
+    </form>
+   </div>
+</body>
+</html>
