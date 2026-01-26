@@ -1,0 +1,45 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    font-family: 'Times New Roman', Times, serif, Tahoma, 'Segoe UI', Georgia;
+}
+
+.container {
+  background-color: hsl(245, 58%, 4%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 320px;
+  text-align: center;
+}
+
+.counter-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+
+}
+
+
+button {
+  padding: 0.75rem 1.2rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+#count {
+  font-size: 2rem;
+  min-width: 40px;
+}
+
+.reset-btn {
+  width: 100%;
+}
