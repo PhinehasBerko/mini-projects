@@ -1,5 +1,3 @@
-const { jsx } = require("react/jsx-runtime");
-
 let count = 0;
 
 const countDisplay = document.getElementById("count");
