@@ -21,24 +21,30 @@ buttons.forEach(button => {
       clearAll();
     } else if (value === "=") {
       calculate();
+    } else if (value === ".") {
+      if (!currentValue.includes(".")) {
+        currentValue += ".";
+        updateDisplay();
+      }
     } else {
-      handleOperator(value);
-    }
+          handleOperator(value);
+        }
   });
 });
 
 // Number handling
 function handleNumber(num) {
-  if (currentValue === "0") {
-    currentValue = num;
-  } else {
-    currentValue += num;
-  }
+  currentValue = currentValue === "0" ? num : currentValue + num;
   updateDisplay();
 }
 
+
 // Operator handling
 function handleOperator(op) {
+  if (operator && previousValue !== null) {
+    calculate();
+  }
+
   previousValue = currentValue;
   currentValue = "0";
   operator = op;
@@ -60,6 +66,9 @@ function calculate() {
       break;
     case "X":
       currentValue = String(a * b);
+      break;
+    case "%":
+      currentValue = String(a * (b / 100));
       break;
     case "/":
       currentValue = b === 0 ? "Error" : String(a / b);
