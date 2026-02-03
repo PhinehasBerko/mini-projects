@@ -1,89 +1,132 @@
-let currentValue = "0";
-let previousValue = null;
-let operator = null;
 
-const display = document.querySelector(".output");
-const buttons = document.querySelectorAll("button");
-
-// update UI
-function updateDisplay() {
-  display.textContent = currentValue;
+// 1. Define the calculator state
+const state = {
+  currentValue :"0",
+  previousValue :null,
+  operator: null,
+  resetNext: false
 }
-
-// Button handling
+// 2. One function controls ALL changes (reducer-style)
+function dispatch(action) {
+  switch (action.type) {
+    case "NUMBER":
+      handleNumber(action.payload);
+      break;
+    case "OPERATOR":
+      handleOperator(action.payload);
+      break;
+    case "EQUALS":
+      calculate();
+      break;
+    case "CLEAR":
+      clearAll();
+      break;
+    case "DECIMAL":
+      handleDecimal();
+      break;
+    case "PERCENTAGE":
+      handlePercentage();
+      break;
+  }
+  updateDisplay();
+}
+// 3. Button handling becomes clean and scalable
 buttons.forEach(button => {
   button.addEventListener("click", () => {
     const value = button.textContent;
 
     if (!isNaN(value)) {
-      handleNumber(value);
+      dispatch({type: "NUMBER", payload: value})
+    } else if (value === '.') {
+      dispatch({type: "DECIMAL"});
     } else if (value === "C") {
-      clearAll();
+      dispatch({ type: "CLEAR" });
     } else if (value === "=") {
-      calculate();
-    } else if (value === ".") {
-      if (!currentValue.includes(".")) {
-        currentValue += ".";
-        updateDisplay();
-      }
-    } else {
-          handleOperator(value);
-        }
-  });
-});
+      dispatch({ type: "EQUALS" });
+    }else {
+      dispatch({ type: "OPERATOR", payload: value });
+    }
+  })
+})
 
-// Number handling
-function handleNumber(num) {
-  currentValue = currentValue === "0" ? num : currentValue + num;
-  updateDisplay();
+// 4. Fix number input (correct behavior after =)
+const handleNumber = num => {
+  if (state.resetNext) {
+    state.currentValue = num;
+    state.resetNext = false;
+    return
+  }
+  state.currentValue = state.currentValue === "0" ? num : currentValue + num;
 }
+// 5. Decimal handling (no duplicates)
 
+const handleDecimal = () => {
+  if (state.resetNext) {
+    state.currentValue = "0.";
+    state.resetNext = false;
+    return;
+  }
 
-// Operator handling
-function handleOperator(op) {
-  if (operator && previousValue !== null) {
+  if(!state.currentValue.includes(".")) {
+    state.currentValue += ".";   
+  }
+}
+// 6. Operator logic with chaining
+const handleOperator = op => {
+  if (state.operator && state.previousValue !== null) {
     calculate();
   }
 
-  previousValue = currentValue;
-  currentValue = "0";
-  operator = op;
+  state.previousValue = state.currentValue;
+  state.operator = op;
+  state.resetNext = true;
 }
 
-// Calculate Logic
-function calculate() {
-  if (!operator || previousValue === null) return;
+// 7. Calculation logic (pure and predictable)
+const calculate = () => {
+  if (!state.operator || state.previousValue === null) return;
 
-  const a = Number(previousValue);
-  const b = Number(currentValue);
+  const a = Number(state.previousValue);
+  const b = Number(state.currentValue);
 
-  switch (operator) {
+  let result;
+
+  switch (state.operator) {
     case "+":
-      currentValue = String(a + b);
+      result = a + b;
       break;
     case "-":
-      currentValue = String(a - b);
+      result = a - b;
       break;
     case "X":
-      currentValue = String(a * b);
-      break;
-    case "%":
-      currentValue = String(a * (b / 100));
+      result = a * b;
       break;
     case "/":
-      currentValue = b === 0 ? "Error" : String(a / b);
+      result = b === 0 ? "Error" : a / b;
+      break;
+    case "%":
+      result = a * (b / 100);
       break;
   }
 
-  operator = null;
-  previousValue = null;
-  updateDisplay();
+  state.currentValue = String(result);
+  state.previousValue = null;
+  state.operator = null;
+  state.resetNext = true;
 }
 
-// Clear Logic
-function clearAll() {
-  currentValue = "0";
-  previousValue = null;
-  operator = null;
-  updateDisplay();
+// 8. UI update
+const updateDisplay =() => {
+  display.textContent = state.currentValue;
 }
+//  9. Clear = full reset
+const clearAll = () => {
+  state.currentValue = "0";
+  state.previousValue = null;
+  state.operator = null;
+  state.resetNext = false;
+}
+
+const display = document.querySelector(".output");
+const buttons = document.querySelectorAll("button");
+
