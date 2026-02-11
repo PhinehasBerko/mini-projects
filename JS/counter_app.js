@@ -7,6 +7,10 @@ const resetBtn = document.getElementById("reset");
 
 function updateUI() {
   countDisplay.textContent = count;
+  
+  if(count > 0) countDisplay.style.color = 'hsl(120 90% 28%)';
+  if(count < 0) countDisplay.style.color = 'hsl(0, 93%, 35%)';
+  if(count === 0) countDisplay.style.color = 'hsl(0 0% 90%)';
 }
 
 incrementBtn.addEventListener("click", () => {
@@ -15,10 +19,8 @@ incrementBtn.addEventListener("click", () => {
 });
 
 decrementBtn.addEventListener("click", () => {
-  if (count > 0) {
     count--;
     updateUI();
-  }
 });
 
 resetBtn.addEventListener("click", () => {
