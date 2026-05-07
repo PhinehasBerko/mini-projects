@@ -1,0 +1,103 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --primary: hsl(170, 80%, 42%);
+    --bg: hsl(170, 80%, 83%) ;
+    --white: #fff;
+    --dark-gray: #666;
+    --black: #002;
+}
+
+
+body {
+    font-family: Georgia, Times, 'Times New Roman', serif;
+    line-height: 1.6;
+    background-color: var(--bg);
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000; 
+    background-color: var(--primary); 
+    padding: 1rem 0;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+    padding: 0 2rem;
+
+}
+.nav-links {
+    display: none;
+    gap: 2rem;
+}
+.logo {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+    color: var(--black); 
+}
+
+
+/* Hero section */
+.hero {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin: 4rem auto;
+    gap: 2rem;
+}
+
+.hero-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.hero-intro h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--white);
+}
+.hire-me {
+    font-size: 1.2rem;
+    padding: 0.8rem 2rem;
+    border-radius: 999px;
+    background-color: var(--primary);
+    width: fit-content;;
+    text-align: center;
+}
+.hero-image {
+    display: flex;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    max-width: 45rem;
+    width: 100%;
+    box-shadow: 0 20px 30px hsla(170, 80%, 0%, 0.3);
+}
+
+@media (min-width: 768px) {
+    .nav-links {
+        display: flex; 
+    }
+    
+    .hero {
+        align-items: center;
+    }
+}
