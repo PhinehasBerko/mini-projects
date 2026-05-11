@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color1: hsl(60, 50%, 50%);
+    --primary-color2: hsl(240, 50%, 50%);
+    --gradient: linear-gradient(45deg, var(--primary-color1) 10%, var(--primary-color2) 100%);
+    --gradient2: linear-gradient(45deg, var(--primary-color1) 5%, var(var(--primary-color2) 95%));
+}
+body {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    background-color: hsl(120, 50%, 70%);
+}
+
+.btn {
+    width: fit-content;
+    height: max-content;
+    border-radius: 12px;
+    padding: 12px;
+    font-size: larger;
+    background: hsla(0, 5%, 96%, 0.2);
+    border: solid 1px hsla(0, 5%, 95%, 0.3);
+    outline: none;
+    color: hsl(0, 50%, 100%);
+    font-size: bold;
+    display: inline-block;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s ease;
+
+}
+.btn:hover {
+    transform: translateY(-4px);
+    background: hsla(0, 5%, 95%, 0.4);
+
+}
+a {
+    text-decoration: none;
+}
+.link-btn {
+    background: linear-gradient( var(--primary-color1), var(--primary-color2)) padding-box ,
+    linear-gradient( var(--primary-color1), var(--primary-color2)) border-box;
+    border:solid 2px transparent;
+
+}
+h1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    background: var(--gradient);
+    background-clip: text;
+    color: transparent;
+}
+
+.btn-glass {
+  display: inline-block;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px); /* Safari support */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-glass:hover {
+  background: rgba(255, 255, 255, 0.4);
+  transform: translateY(-4px);
+
+}
+
+.btn-neumorphic {
+  display: inline-block;
+  padding: 15px 30px;
+  background: #e0e0e0; /* Match this to your page background */
+  border: none;
+  border-radius: 50px;
+  color: #444;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 20px 20px 60px #bebebe, 
+             -20px -20px 60px #ffffff;
+  transition: box-shadow 0.2s ease;
+}
+
+.btn-neumorphic:active {
+  box-shadow: inset 6px 6px 12px #bebebe, 
+              inset -6px -6px 12px #ffffff;
+}
+
+.btn-retro {
+    
+    padding: 0.75rem 1.5rem;
+    background-color: hsl(60, 100%, 50%);
+    border: 4px solid hsl(60, 0%, 0%);
+    text-transform: uppercase;
+    box-shadow: 7px 7px 0px black;
+    font-size: bold;
+    font-weight: bold;
+    transform:  all 0.1s;
+
+}
+
+.btn-retro:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0px black;
+}
+
+.btn-retro:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 black;
+}
+
+.btn-gradient-border {
+  display: inline-block;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: #fff;
+  background: #111; /* Dark background to make border pop */
+  border: 4px solid;
+  border-image-source: linear-gradient(45deg, #ff00cc, #3333ff);
+  border-image-slice: 1;
+  transition: all 0.4s ease;
+}
+
+.btn-gradient-border:hover {
+  background: transparent;
+  border-image-source: linear-gradient(45deg, #3333ff, #ff00cc);
+  letter-spacing: 2px; /* Subtle animation */
+}
