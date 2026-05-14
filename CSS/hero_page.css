@@ -19,21 +19,15 @@ body {
     background-color: var(--bg);
     max-width: 1240px;
     margin: 0 auto;
+    padding: 0 2rem;
 }
 
-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000; 
-    background-color: var(--primary); 
-    padding: 1rem 0;
-}
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 1.5rem;
-    padding: 0 2rem;
+    font-size: clamp(1rem, 5vw, 1.5rem);
+    padding: 2rem 0;
 
 }
 .nav-links {
@@ -41,12 +35,12 @@ header {
     gap: 2rem;
 }
 .logo {
-    font-size: 2.5rem;
+    font-size: clamp(1.5rem, 5vw, 2.5rem);
     text-align: center;
 }
 
 .nav-links {
-    display: flex;
+    display: hidden;
     justify-content: space-between;
     gap: 1.5rem;
 }
@@ -77,21 +71,123 @@ a {
 }
 .hire-me {
     font-size: 1.2rem;
+    font-weight: bold;
     padding: 0.8rem 2rem;
     border-radius: 999px;
+    color: var(--white);
     background-color: var(--primary);
     width: fit-content;;
     text-align: center;
+    cursor: pointer;
 }
 .hero-image {
     display: flex;
-    object-fit: cover;
-    aspect-ratio: 16 / 9;
     max-width: 45rem;
+    overflow: hidden;
+    border-radius: 24px;
     width: 100%;
-    box-shadow: 0 20px 30px hsla(170, 80%, 0%, 0.3);
+    max-width: 550px;
+    margin: 0 auto;
+    box-shadow:  20px 15px 0 hsla(170, 80%, 0%, 0.3);
 }
 
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.services {
+    max-width: 1200px;
+    width: 100%;
+    margin: 4rem auto;
+    padding: 0 2rem;
+}
+
+.services-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.services-intro h1 {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    color: var(--primary);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white);
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px hsla(170, 80%, 0%, 0.2);
+
+}
+
+.card-image img{
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+    width: 100%;
+
+}
+
+.card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 1rem;
+}
+
+.card-content p {
+    color: var(--dark-gray)
+}
+.btn {
+    text-decoration: none;
+    color: var(--white);
+    font-weight: bold;
+    background-color: var(--primary);
+    border-radius: 999px;
+    padding: 0.8rem;
+    width: 100%;
+    text-align: center;
+    margin-top:  auto;
+    transition: 0.3s ease;
+}
+
+.btn:hover, 
+.hire-me:hover {
+    background-color: var(--bg);
+    color : var(--primary);
+    border: 1px solid var(--primary);
+}
+.specialization-pills {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.specialization-pills span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: 1px solid var(--primary);
+}
 @media (min-width: 768px) {
     .nav-links {
         display: flex; 
